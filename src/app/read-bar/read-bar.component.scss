@@ -26,3 +26,16 @@ ion-menu-button {
 #container a {
   text-decoration: none;
 }
+
+.total-value{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.total-label, .price-col{
+  text-align: right;
+}
+
+.scan-btn{
+  margin-left: 10px;
+  margin-top: 10px;
+}

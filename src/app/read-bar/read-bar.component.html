@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Read BarCode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button class="scan-btn" ion-button (click)="scan()">Scan ... </ion-button>
+    <div *ngIf="scanData">
+        <p>Scanned Data : {{scanData?.name}} - {{scanData?.price}}</p>
+    </div>
+
+    <div *ngIf="allItems?.length" class="cart-container table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allItems; let ind = index">
+            <td>{{ind+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.qty}}</td>
+            <td class="price-col">{{(item.qty * item.price) | number:'.0-2'}}</td>
+            <th><ion-icon (click)="deleteItem(ind)" name="trash"></ion-icon></th>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="total-label" colspan="4">Total</td>
+            <td class="total-value price-col">{{getTotal() | number:'.0-2'}}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bill-controls">
+        <ion-button ion-button color="danger" (click)="clearCart()">Start New Bill</ion-button>
+        <ion-button ion-button color="warning" (click)="redirectToPayment()">Proceed to Pay</ion-button>
+      </div>
+    </div>
+</ion-content>

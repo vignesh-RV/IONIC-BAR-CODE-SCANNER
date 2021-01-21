@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create New BarCode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="create-container">
+    <ion-input [(ngModel)]="encodeData.name" clearInput placeholder="Enter product name.."></ion-input>
+    <ion-input [(ngModel)]="encodeData.price" (ionInput)="numberOnlyValidation($event)" clearInput placeholder="Enter product price.."></ion-input>
+
+    <ion-button [disabled]="!encodeData.price || !encodeData.name" (click)="encodeText()">Create</ion-button>
+    
+    <svg #barcode></svg>
+  </div>
+</ion-content>

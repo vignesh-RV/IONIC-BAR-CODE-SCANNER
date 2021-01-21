@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  ion-button (click)="redirectToScanPage()"><ion-icon name="chevron-back-outline"></ion-icon> Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Payments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="payment-form-container">
+    <div class="payment-left-section">
+      <h3>Select a Payment Method</h3>
+      <ul>
+        <li [class.active]="paymentType == 'CCARD'" (click)="paymentType = 'CCARD'">
+          Credit Card
+          <ion-icon *ngIf="paymentType == 'CCARD'" name="checkmark-outline"></ion-icon>
+        </li>
+        <li [class.active]="paymentType == 'DCARD'" (click)="paymentType = 'DCARD'">
+          Debit Card
+          <ion-icon *ngIf="paymentType == 'DCARD'" name="checkmark-outline"></ion-icon>
+        </li>
+        <li [class.active]="paymentType == 'NB'" (click)="paymentType = 'NB'">
+          Net Banking
+          <ion-icon *ngIf="paymentType == 'NB'" name="checkmark-outline"></ion-icon>
+        </li>
+        <li [class.active]="paymentType == 'UPI'" (click)="paymentType = 'UPI'">
+          UPI Payment
+          <ion-icon *ngIf="paymentType == 'UPI'" name="checkmark-outline"></ion-icon>
+        </li>
+      </ul>
+    </div>
+    <div class="payment-right-section">
+      <div [ngSwitch]="paymentType">
+        <div *ngSwitchCase="'NB'" class="net-banking-container">
+          <button class="net-banking-item">
+            <img class="bank-logo" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,e_trim/hdfc_edwzub" width="30">
+            <div class="bank-name">HDFC</div>
+          </button>
+
+          <button class="net-banking-item">
+            <img class="bank-logo" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,e_trim/icici_hckjq4" width="30">
+            <div class="bank-name">ICICI</div>
+          </button>
+
+          <button class="net-banking-item">
+            <img class="bank-logo" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,e_trim/sbi_ts3ab8" width="30">
+            <div class="bank-name">SBI</div>
+          </button>
+
+          <button class="net-banking-item">
+            <img class="bank-logo" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,e_trim/axis_i472hk" width="30">
+            <div class="bank-name">Axis</div>
+          </button>
+
+          <button class="net-banking-item">
+            <img class="bank-logo" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,e_trim/kotak_gjlw24" width="30">
+            <div class="bank-name">Kotak</div>
+          </button>
+        </div>
+
+        <div *ngSwitchCase="'CCARD'" class="card-section">
+          <h3>Enter Card Details</h3>
+          <ion-item>
+            <ion-label position="floating">Card Number</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="floating">Expiry(MM/YY)</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="floating">CVV</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Name on Card</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+
+          <div class="payment-control">
+            <ion-button class="payment-btn" ion-button position="stacked">PAY ₹{{storage?.currentBill?.total || 0}}</ion-button>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'UPI'" class="upi-section">
+          <h3>Pay via New VPA</h3>
+          <p>You must have a Virtual Payment Address</p>
+          
+          <ion-item>
+            <ion-label position="floating">VPA</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <div class="payment-control">
+            <ion-button class="payment-btn" ion-button>VERIFY AND PAY ₹{{storage?.currentBill?.total || 0}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

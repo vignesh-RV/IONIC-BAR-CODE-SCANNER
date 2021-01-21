@@ -1,15 +1,31 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AllListComponent } from './all-list/all-list.component';
+import { CreateBarCode } from './create-bar/create-bar.component';
+import { AppPayments } from './payments/payments.component';
+import { ReadBarCode } from './read-bar/read-bar.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'read-bar',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'create-bar',
+    component: CreateBarCode
+  },
+  {
+    path: 'read-bar',
+    component: ReadBarCode
+  },
+  {
+    path: 'list',
+    component: AllListComponent
+  },
+  {
+    path: 'payments',
+    component: AppPayments
   }
 ];
 

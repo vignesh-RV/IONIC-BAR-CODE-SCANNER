@@ -1,0 +1,86 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-button{
+  cursor: pointer;
+}
+
+.payment-form-container{
+  margin: 15px 0;
+  .payment-left-section{
+    min-width: 120px;
+  }
+}
+.payment-left-section{
+  ul{
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+    li{
+      min-height: 40px;
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      border-bottom: solid 1px #aaa;
+      padding-left: 10px;
+      &.active{
+        background-color: silver;
+        color: #111;
+      }
+      ion-icon{
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.payment-control{
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  .payment-btn{
+    min-width: 180px;
+  }
+}
+
+h3{
+  color: #401717;
+  font-weight: 800;
+}
+
+.net-banking-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  .net-banking-item{
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
